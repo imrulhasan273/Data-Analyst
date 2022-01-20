@@ -2,9 +2,56 @@
 
 ---
 
-## Window Function
+# Window Function
 
 ---
+
+## Fetching
+
+---
+
+
+
+---
+
+## ranking
+
+---
+
+
+---
+
+## paging
+
+---
+
+
+---
+
+## Aggregate window functions
+
+---
+
+
+---
+
+## frames
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
