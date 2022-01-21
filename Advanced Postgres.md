@@ -23,6 +23,8 @@ WHERE 1=1
 
 ![](img/1.png)
 
+---
+
 - Using `ROW_NUMBER`
 
 ```sql
@@ -64,6 +66,8 @@ WHERE 1=1
 
 ![](img/3.png)
 
+---
+
 - Order by multiple columns
 
 ```sql
@@ -79,6 +83,8 @@ WHERE 1=1
 ```
 
 ![](img/4.png)
+
+---
 
 - Ordering in- and outside OVER
 
@@ -99,6 +105,8 @@ ORDER BY country ASC, Row_N ASC
 
 > **ORDER BY** `inside` OVER takes effect before **ORDER BY** `outside` OVER
 
+---
+
 ### LEAD, LAG
 
 - Current Champion
@@ -116,6 +124,8 @@ AND event = 'Discus Throw'
 ```
 
 ![](img/6.png)
+
+---
 
 - Current and Last champion
 
@@ -140,6 +150,8 @@ ORDER BY year ASC
 ```
 
 ![](img/7.png)
+
+---
 
 - Current and Last champion :: using partition - One Column
 
@@ -167,6 +179,8 @@ ORDER BY event ASC, year asc
 ```
 
 ![](img/8.png)
+
+---
 
 - **More Complex Partitioning**
 
