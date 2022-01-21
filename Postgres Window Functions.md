@@ -239,8 +239,85 @@ FROM country_gold
 
 ---
 
+**The four functions**
+`Relative` 
+- LAG(column, n) returns column's value at the row n rows before the current row
+- LEAD(column, n) returns column's value at the row n rows aer the current row
+`Absolute`
+- FIRST_VALUE(column) returns the rst value in the table or partition
+- LAST_VALUE(column) returns the last value in the table or partition
 
+---
 
+- **LEAD**
+
+```sql
+WITH Hosts AS 
+(
+	SELECT DISTINCT year, 
+	City
+	FROM Summer_Medals
+)
+SELECT
+	year, 
+	city,
+	LEAD(City, 1) OVER (ORDER BY Year ASC) AS Next_City,
+	LEAD(City, 2) OVER (ORDER BY Year ASC) AS After_Next_City
+FROM Hosts
+ORDER BY Year asc
+;
+```
+
+**Output**
+
+![](img/11.png)
+
+---
+
+- **FIRST_VALUE and LAST_VALUE**
+
+```sql
+SELECT
+	Year, City,
+	FIRST_VALUE(City) over (ORDER BY Year ASC) AS First_City,
+	LAST_VALUE(City) OVER ( ORDER BY year ASC RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS Last_City
+FROM Hosts
+ORDER BY Year asc
+;
+```
+
+**Output**
+
+![](img/12.png)
+
+> By default, a window starts at the beginning of the table or partition and ends at the current row
+
+> RANGE BETWEEN ... clause extends the window to the end of the table or partition.
+
+---
+
+- Partition with lead
+
+```sql
+SELECT
+	year, 
+	event, 
+	champion,
+	LEAD(champion,1) OVER (PARTITION BY event ORDER BY event ASC, year ASC) as next_champion
+FROM discus_gold
+ORDER BY event ASC, year asc
+;
+```
+
+**Output**
+
+![](img/13.png)
+
+---
+
+![](img/14.png)
+
+---
 
 ---
 
