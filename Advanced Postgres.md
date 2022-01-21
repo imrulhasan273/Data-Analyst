@@ -141,7 +141,7 @@ ORDER BY year ASC
 
 ![](img/7.png)
 
-- Current and Last champion :: using partition
+- Current and Last champion :: using partition - One Column
 
 ```sql
 WITH discus_gold AS (
@@ -167,6 +167,33 @@ ORDER BY event ASC, year asc
 ```
 
 ![](img/8.png)
+
+- **More Complex Partitioning**
+
+![](img/9.png)
+
+
+```sql
+WITH country_gold AS (
+	SELECT
+	DISTINCT year, country, event
+	FROM summer_medals
+	WHERE
+	year IN (2008, 2012)
+	AND country IN ('CHN','JPN')
+	AND gender = 'Women' AND medal = 'Gold'
+)
+SELECT
+	year, 
+	country, 
+	event,
+	ROW_NUMBER() OVER (PARTITION BY year, country)
+FROM country_gold
+;
+```
+
+![](img/10.png)
+
 
 ---
 
