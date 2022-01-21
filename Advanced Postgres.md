@@ -101,8 +101,72 @@ ORDER BY country ASC, Row_N ASC
 
 ### LEAD, LAG
 
+- Current Champion
 
+```sql
+SELECT
+	year, 
+	country AS Champion
+FROM summer_medals
+WHERE
+AND year IN (1996, 2000, 2004, 2008, 2012)
+AND gender = 'Men' AND medal = 'Gold'
+AND event = 'Discus Throw'
+;
+```
 
+![](img/6.png)
+
+- Current and Last champion
+
+```sql
+WITH discus_gold AS (
+	SELECT
+		year, 
+		country AS Champion
+	FROM summer_medals
+	WHERE
+	AND year IN (1996, 2000, 2004, 2008, 2012)
+	AND gender = 'Men' AND medal = 'Gold'
+	AND event = 'Discus Throw'
+)
+SELECT
+	year, 
+	champion,
+	LAG(champion, 1) OVER (ORDER BY year ASC) AS last_champion
+FROM discus_gold
+ORDER BY year ASC
+;
+```
+
+![](img/7.png)
+
+- Current and Last champion :: using partition
+
+```sql
+WITH discus_gold AS (
+	SELECT
+		year, 
+		event, 
+		country AS champion
+	FROM summer_medals
+	WHERE 1=1
+	AND year IN (2004, 2008, 2012)
+	AND gender = 'Men' AND Medal = 'Gold'
+	AND event IN ('Discus Throw','Triple Jump')
+	AND gender = 'Men'
+)
+SELECT
+	year, 
+	event, 
+	champion,
+	LAG(champion) OVER (PARTITION BY event ORDER BY event ASC, year ASC) AS last_champion
+FROM discus_gold
+ORDER BY event ASC, year asc
+;
+```
+
+![](img/8.png)
 
 ---
 
