@@ -245,6 +245,21 @@ when a table produces a large number of transactions or may be the table have cr
 
 ---
 
+## Phase 2 : Technical Interview
+
+---
+
+1. Some joining related problems.
+
+2. coalesce() function and its uses. 
+
+3. How do you use coalesce() function instead of case statement to segments amount like `0-1000 --> small`, `1001-5000 --> mediam`, `5001 + --> large`
+
+4. rank() vs dense_rank() with appropriate example.
+
+---
+
+
 
 
 
