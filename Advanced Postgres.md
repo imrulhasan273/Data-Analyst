@@ -21,6 +21,8 @@ WHERE 1=1
 ;
 ```
 
+**Output**
+
 ![](img/1.png)
 
 ---
@@ -39,7 +41,11 @@ WHERE 1=1
 ;
 ```
 
+**Output**
+
 ![](img/2.png)
+
+---
 
 ### Anatomy of a window function
 
@@ -49,6 +55,8 @@ FUNCTION_NAME() OVER (...)
 - ROWS/RANGE PRECEDING/FOLLOWING/UNBOUNDED
 
 > ORDER BY in OVER orders the rows related to the current rows. Example: Ordering by year in descending order in ROW_NUMBER 's OVER clause will assign 1 to the most recent year's rows
+
+---
 
 - Order By
 
@@ -63,6 +71,8 @@ WHERE 1=1
 	AND Medal = 'Gold'
 ;
 ```
+
+**Output**
 
 ![](img/3.png)
 
@@ -81,6 +91,8 @@ WHERE 1=1
 	AND Medal = 'Gold'
 ;
 ```
+
+**Output**
 
 ![](img/4.png)
 
@@ -101,6 +113,8 @@ ORDER BY country ASC, Row_N ASC
 ;
 ```
 
+**Output**
+
 ![](img/5.png)
 
 > **ORDER BY** `inside` OVER takes effect before **ORDER BY** `outside` OVER
@@ -108,6 +122,8 @@ ORDER BY country ASC, Row_N ASC
 ---
 
 ### LEAD, LAG
+
+---
 
 - Current Champion
 
@@ -122,6 +138,8 @@ AND gender = 'Men' AND medal = 'Gold'
 AND event = 'Discus Throw'
 ;
 ```
+
+**Output**
 
 ![](img/6.png)
 
@@ -148,6 +166,8 @@ FROM discus_gold
 ORDER BY year ASC
 ;
 ```
+
+**Output**
 
 ![](img/7.png)
 
@@ -178,6 +198,8 @@ ORDER BY event ASC, year asc
 ;
 ```
 
+**Output**
+
 ![](img/8.png)
 
 ---
@@ -205,6 +227,8 @@ SELECT
 FROM country_gold
 ;
 ```
+
+**Output**
 
 ![](img/10.png)
 
